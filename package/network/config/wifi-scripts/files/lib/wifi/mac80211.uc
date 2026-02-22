@@ -104,9 +104,12 @@ set ${si}=wifi-iface
 set ${si}.device='${name}'
 set ${si}.network='lan'
 set ${si}.mode='ap'
-set ${si}.ssid='${defaults?.ssid || "ImmortalWrt"}'
-set ${si}.encryption='${defaults?.encryption || "none"}'
-set ${si}.key='${defaults?.key || ""}'
+if (band_name == '2g')
+    set ${si}.ssid='DOTYWRT 2.5G'
+else if (band_name == '5g')
+    set ${si}.ssid='DOTYWRT 5G'
+set ${si}.encryption='psk2'
+set ${si}.key='dotycat.com'
 
 `);
 		config[name] = {};
