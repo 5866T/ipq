@@ -1,4 +1,11 @@
 # SPDX-License-Identifier: GPL-2.0-only
+# Copyright (c) 2018 Chion Tang <tech@chionlab.moe>
+#   Original xt_FULLCONENAT and related iptables extension author
+# Copyright (c) 2019-2022 GitHub/llccd Twitter/@gNodeB
+#   Added IPv6 support for xt_FULLCONENAT and ip6tables extension
+#   Ported to recent kernel versions
+# Copyright (c) 2022 Syrone Wong <wong.syrone@gmail.com>
+#   Massively rewrite the whole module, split the original code into library and nftables 'fullcone' expression module
 
 include $(TOPDIR)/rules.mk
 include $(INCLUDE_DIR)/kernel.mk
@@ -14,6 +21,7 @@ define KernelPackage/nft-fullcone
   TITLE:=nftables fullcone expression support
   FILES:= $(PKG_BUILD_DIR)/nft_fullcone.ko
   KCONFIG:= CONFIG_NFT_FULLCONE=y CONFIG_NF_NAT=y CONFIG_NF_NAT_IPV6=y CONFIG_NF_CONNTRACK_EVENTS=y CONFIG_NF_CONNTRACK_CHAIN_EVENTS=y
+  PROVIDES:=$(PKG_NAME)
   AUTOLOAD:=$(call AutoProbe,nft_fullcone)
 endef
 
