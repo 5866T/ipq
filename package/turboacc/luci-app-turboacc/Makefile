@@ -38,6 +38,7 @@ config PACKAGE_$(PKG_NAME)_INCLUDE_BBR_CCA
 config PACKAGE_$(PKG_NAME)_INCLUDE_NFT_FULLCONE
 	bool "Include NFT FULLCONE"
 	default y
+	depends on PACKAGE_kmod-nft-fullcone
 endef
 
 include $(TOPDIR)/feeds/luci/luci.mk
