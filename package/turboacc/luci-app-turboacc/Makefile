@@ -18,11 +18,12 @@ PKG_CONFIG_DEPENDS:= \
 	CONFIG_PACKAGE_$(PKG_NAME)_INCLUDE_OFFLOADING \
 	CONFIG_PACKAGE_$(PKG_NAME)_INCLUDE_NFT_FULLCONE
 
-LUCI_TITLE:=LuCI support for Flow Offload / Shortcut-FE
+LUCI_TITLE:=LuCI support for Flow Offload
 LUCI_DEPENDS:= \
 	+luci +luci-compat \
 	+PACKAGE_$(PKG_NAME)_INCLUDE_BBR_CCA:kmod-tcp-bbr \
-	+PACKAGE_$(PKG_NAME)_INCLUDE_OFFLOADING:kmod-nft-offload
+	+PACKAGE_$(PKG_NAME)_INCLUDE_OFFLOADING:kmod-nft-offload \
+	+PACKAGE_$(PKG_NAME)_INCLUDE_NFT_FULLCONE:kmod-nft-fullcone
 LUCI_PKGARCH:=all
 
 define Package/$(PKG_NAME)/config
